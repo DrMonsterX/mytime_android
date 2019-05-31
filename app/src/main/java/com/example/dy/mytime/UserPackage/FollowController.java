@@ -11,7 +11,7 @@ import java.util.Comparator;
 public class FollowController extends UserController implements IFollow {
     private MyDatabaseController controller;
     public FollowController(MyDatabaseController myDBC){
-        super(myDBC);
+        super();
         this.controller=myDBC;
     }
 

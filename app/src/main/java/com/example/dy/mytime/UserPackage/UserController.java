@@ -6,8 +6,8 @@ import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
 
 public class UserController implements IGetUser{
     private MyDatabaseController controller;
-    public UserController(MyDatabaseController myDBC){
-        controller=myDBC;
+    public UserController(){
+//        controller=myDBC;
     }
 
     //获取目标ID用户

@@ -131,7 +131,7 @@ public class RankActivity extends AppCompatActivity {
         userName=(TextView) findViewById(R.id.userName);
         userName.setText(user.getUserName());
 
-        UserController myUC2=new UserController(dbCon);
+        UserController myUC2=new UserController();
         percent=(TextView) findViewById(R.id.percent);
         percent.setText((myUC2.getWeekCompleteness(user.getUserID())+"%"));
 

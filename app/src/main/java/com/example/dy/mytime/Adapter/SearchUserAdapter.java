@@ -62,7 +62,7 @@ public class SearchUserAdapter extends RecyclerView.Adapter<SearchUserAdapter.Se
     public void onBindViewHolder( SearchUserAdapter.SearchViewHolder holder, final int position) {
         MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
         MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        UserController myUC=new UserController(dbCon);
+        UserController myUC=new UserController();
         FollowController myFC=new FollowController(dbCon);
         /*数据库找到id为userID的user*/
         me=myUC.getUser(UserId.getInstance().getUserId());

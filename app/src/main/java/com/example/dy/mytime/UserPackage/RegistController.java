@@ -1,23 +1,38 @@
 package com.example.dy.mytime.UserPackage;
 
+import android.util.Log;
+
 import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
 
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static android.content.ContentValues.TAG;
+
 public class RegistController extends UserController implements IRegist {
-    private MyDatabaseController controller;
-    public RegistController(MyDatabaseController myDBC){
-        super(myDBC);
-        this.controller=myDBC;
+
+    public static int  num;
+    public RegistController(){
+        super();
     }
 
     //用户注册
     public int register(String name,int iconid,String code) {
-        int num;
-        num=controller.getCount("User")+1+1652770;
-        String cmd1="insert into User values("+Integer.toString(num)+",'"
-                +name+"',"+Integer.toString(iconid)+",'"+code+"',"+Integer.toString(num)+")";
-        String cmd2="insert into Completeness values("+Integer.toString(num)+",0,0,0,0,0,0)";
-        controller.modify(cmd1);
-        controller.modify(cmd2);
+        //执行注册线程
+        Thread thread=new RegistTread(name,iconid,code);
+        thread.start();
+        try
+        {
+            thread.join();//等待注册线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
         return num;
     }
 }

@@ -5,7 +5,7 @@ import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
 public class PasswordController extends UserController implements IChangePassword {
     private MyDatabaseController controller;
     public PasswordController(MyDatabaseController myDBC){
-        super(myDBC);
+        super();
         this.controller=myDBC;
     }
 
