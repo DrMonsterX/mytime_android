@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MEMO</string>
+    <string name="attention_list">关注列表</string>
+    <string name="change_password_bt">修 改 密 码</string>
+    <string name="user_name">用户名</string>
+    <string name="id">账户</string>
+    <string name="password">密码</string>
+    <string name="new_password">新密码</string>
+    <string name="ensure_password">确认密码</string>
+    <string name="register">新 用 户 注 册</string>
+    <string name="user_homepage">个 人 主 页</string>
+    <string name="add_attention">添 加 关 注</string>
+    <string name="change_schedule">日 程 编 辑</string>
+    <string name="add_schedule">新 建 日 程</string>
+    <string name="change_task">任 务 编 辑</string>
+    <string name="add_task">新 建 任 务</string>
+    <string name="statistic">我 的 报 表</string>
+    <string name="rank">排 行 榜</string>
+    <string name="task_list">我 的 任 务</string>
+    <string name="schedule_list">我 的 日 程</string>
+    <string name="calendar">我 的 日 历</string>
+    <string name="title_activity_gragh">GraghActivity</string>
+</resources>

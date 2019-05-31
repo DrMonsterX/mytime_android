@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#042248</color>
+    <color name="colorAccent">#f5020828</color>
+    <color name="mainText">#434343</color>
+    <color name="whiteText">#fffafa</color>
+    <color name="black">#000000</color>
+    <color name="yellow">#f1f0d2</color>
+    <color name="gray">#686868</color>
+    <color name="orange">#fd7f40</color>
+    <color name="red">#8b3a3a</color>
+    <color name="orangeQian">#F4A460</color>
+    <color name="orange1">#f77c43</color>
+
+    <color name="task1">#acdff9</color>
+    <color name="task2">#8bd8f9</color>
+    <color name="task3">#73c2f5</color>
+    <color name="task4">#6dc1f7</color>
+    <color name="task5">#58b7ef</color>
+    <color name="schedule">#F5F5DC</color>
+
+</resources>

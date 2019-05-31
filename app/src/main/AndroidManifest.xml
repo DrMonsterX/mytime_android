@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.dy.mytime">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/memo_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/memo_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".Activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.AttentionActivity" />
+        <activity android:name=".Activity.UserHomepageActivity" />
+        <activity android:name=".Activity.ChangePasswordActivity" />
+        <activity android:name=".Activity.TaskActivity" />
+        <activity android:name=".Activity.ScheduleActivity" />
+        <activity
+            android:name=".Activity.AddScheduleActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ChangeScheduleActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.AddTaskActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ChangeTaskActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.StatisticActivity"
+            android:label="@string/title_activity_gragh" />
+        <activity android:name=".Activity.RankActivity" />
+        <activity android:name=".Activity.TaskListActivity" />
+        <activity android:name=".Activity.CalendarActivity" />
+        <activity android:name=".Activity.ScheduleListActivity"/>
+        <activity android:name=".Activity.TaskTagActivity"/>
+    </application>
+
+</manifest>
