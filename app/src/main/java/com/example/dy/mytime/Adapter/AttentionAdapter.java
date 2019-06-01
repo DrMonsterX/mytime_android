@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
@@ -75,15 +76,44 @@ public class AttentionAdapter extends RecyclerView.Adapter<AttentionAdapter.Atte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO Auto-generated method stub
-                        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-                        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                        FollowController myUC=new FollowController(dbCon);
+//                        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
+//                        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                        FollowController myUC=new FollowController();
                         /*数据库取消关注*/
                         myUC.deleteFollow(list.get(position).getUserID());
+                        switch(FollowController.DFollow_code)
+                        {
+                            case -1:
+                                AlertDialog.Builder builder= new AlertDialog.Builder(context,R.style.dialog_style);
+                                builder.setTitle("提示");//提示框标题
+                                builder.setMessage("\n  调用失败");//提示内容确定按钮
+                                builder.create().show();
+                                break;
+                            case -2:
+                                AlertDialog.Builder builder2= new AlertDialog.Builder(context,R.style.dialog_style);
+                                builder2.setTitle("提示");//提示框标题
+                                builder2.setMessage("\n  不可取消关注自己");//提示内容确定按钮
+                                builder2.create().show();
+                                break;
+                            case -3:
+                                AlertDialog.Builder builder3= new AlertDialog.Builder(context,R.style.dialog_style);
+                                builder3.setTitle("提示");//提示框标题
+                                builder3.setMessage("\n  用户id无效");//提示内容确定按钮
+                                builder3.create().show();
+                                break;
+                            case 0:
+                                AlertDialog.Builder builder4= new AlertDialog.Builder(context,R.style.dialog_style);
+                                builder4.setTitle("提示");//提示框标题
+                                builder4.setMessage("\n  未知错误");//提示内容确定按钮
+                                builder4.create().show();
+                                break;
+                            case 1:
+                                list.remove(position);//修改list内容
+                                notifyDataSetChanged();
+                                break;
+                            default:
 
-                        list.remove(position);//修改list内容
-                        notifyDataSetChanged();
-
+                        }
 
                     }
                 });//确定按钮

@@ -137,7 +137,7 @@ public class UserHomepageActivity extends AppCompatActivity {
 
         /*数据库得到关注列表*/
         attentionlist.clear();
-        FollowController myFC=new FollowController(dbCon);
+        FollowController myFC=new FollowController();
         ArrayList<User> myFollow=myFC.getFollow(UserId.getInstance().getUserId());
         attentionlist.addAll(myFollow);
 

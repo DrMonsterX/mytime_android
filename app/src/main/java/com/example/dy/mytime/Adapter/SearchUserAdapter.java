@@ -60,10 +60,10 @@ public class SearchUserAdapter extends RecyclerView.Adapter<SearchUserAdapter.Se
 
     @Override
     public void onBindViewHolder( SearchUserAdapter.SearchViewHolder holder, final int position) {
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
+//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
         UserController myUC=new UserController();
-        FollowController myFC=new FollowController(dbCon);
+        FollowController myFC=new FollowController();
         /*数据库找到id为userID的user*/
         me=myUC.getUser(UserId.getInstance().getUserId());
 
@@ -91,9 +91,9 @@ public class SearchUserAdapter extends RecyclerView.Adapter<SearchUserAdapter.Se
             public void onClick(View v) {
 
                 /*数据库添加关注*/
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                FollowController myUC=new FollowController(dbCon);
+//                MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
+//                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                FollowController myUC=new FollowController();
                 myUC.followUser(list.get(position).getUserID());
                 if(Activity.class.isInstance(context))
                 {

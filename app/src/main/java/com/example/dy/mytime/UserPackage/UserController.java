@@ -12,6 +12,16 @@ public class UserController implements IGetUser{
 
     //获取目标ID用户
     public User getUser(int userId){
+        Thread thread=new LoginThread(userId);
+        thread.start();  //执行登录验证线程
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
         return LoginController.user;
     }
 
