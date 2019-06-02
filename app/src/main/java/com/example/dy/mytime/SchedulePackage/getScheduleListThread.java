@@ -38,13 +38,13 @@ public class getScheduleListThread extends Thread {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     if (jsonObject != null) {
-                        int scheduleID = jsonObject.optInt("scheduleID");
+                        int scheduleID = jsonObject.optInt("scheduleId");
                         int position = jsonObject.optInt("position");
                         String scheduleName = jsonObject.optString("scheduleName");
-                        String scheduleStartTime = jsonObject.optString("scheduleStartTime");
-                        String scheduleStopTime = jsonObject.optString("scheduleStopTime");
-                        String scheduleRemark = jsonObject.optString("scheduleRemark");
-                        int scheduleRemind = jsonObject.optInt("scheduleRemind");
+                        String scheduleStartTime = jsonObject.optString("startTime");
+                        String scheduleStopTime = jsonObject.optString("finishTime");
+                        String scheduleRemark = jsonObject.optString("remark");
+                        int scheduleRemind = jsonObject.optInt("isRemind");
                         Schedule new_schedule = new Schedule(scheduleID, position, scheduleName, scheduleStartTime, scheduleStopTime, scheduleRemark, scheduleRemind);
                         ScheduleController.myScheduleList.add(new_schedule);
                     }

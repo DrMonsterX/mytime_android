@@ -25,7 +25,7 @@ public class ModifyScheduleThread extends Thread {
         this.remark=remark;
         this.remind=remind;
     }
-    final String path="http://119.3.217.215:8081 /modifySchedule?scheduleId=";
+    final String path="http://119.3.217.215:8081/modifySchedule?scheduleId=";
 
     public void run() {
         OkHttpClient client = new OkHttpClient();

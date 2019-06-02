@@ -35,13 +35,13 @@ public class getScheduleByIdThread extends Thread{
             if(result!=null){
                 try {
                     JSONObject jsonObject = new JSONObject(result);
-                    int scheduleID = jsonObject.optInt("scheduleID");
+                    int scheduleID = jsonObject.optInt("scheduleId");
                     int position = jsonObject.optInt("position");
                     String scheduleName = jsonObject.optString("scheduleName");
-                    String scheduleStartTime = jsonObject.optString("scheduleStartTime");
-                    String scheduleStopTime = jsonObject.optString("scheduleStopTime");
-                    String scheduleRemark = jsonObject.optString("scheduleRemark");
-                    int scheduleRemind = jsonObject.optInt("scheduleRemind");
+                    String scheduleStartTime = jsonObject.optString("startTime");
+                    String scheduleStopTime = jsonObject.optString("finishTime");
+                    String scheduleRemark = jsonObject.optString("remark");
+                    int scheduleRemind = jsonObject.optInt("isRemind");
                     Schedule new_schedule = new Schedule(scheduleID, position, scheduleName, scheduleStartTime, scheduleStopTime, scheduleRemark, scheduleRemind);
                     ScheduleController.schedule=new_schedule;
                 }catch (JSONException e){
