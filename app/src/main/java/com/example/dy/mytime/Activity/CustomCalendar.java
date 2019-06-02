@@ -342,12 +342,12 @@ public class CustomCalendar extends View{
             if (taskDraw!=null) {
                 int taskcolors[]={taskDraw.taskcolor1,taskDraw.taskcolor2,taskDraw.taskcolor3};
                 for(int t = 0; t<3; t++){
-                    if ( taskcolors[t]==0) continue;
-                    else if ( taskcolors[t]==1) mColorTask= Color.parseColor("#acdff9");
-                    else if ( taskcolors[t]==2) mColorTask= Color.parseColor("#8bd8f9");
-                    else if ( taskcolors[t]==3) mColorTask=Color.parseColor("#73c2f5");
-                    else if ( taskcolors[t]==4) mColorTask=Color.parseColor("#6dc1f7");
-                    else if ( taskcolors[t]==5) mColorTask=Color.parseColor("#58b7ef");
+                    if ( taskcolors[t]==0) continue;//修改了颜色
+                    else if ( taskcolors[t]==1) mColorTask= Color.parseColor("#f185b3e4");
+                    else if ( taskcolors[t]==2) mColorTask= Color.parseColor("#ed6997e1");
+                    else if ( taskcolors[t]==3) mColorTask=Color.parseColor("#f59d9d");
+                    else if ( taskcolors[t]==4) mColorTask=Color.parseColor("#F5F5DC");
+                    else if ( taskcolors[t]==5) mColorTask=Color.parseColor("#f4d0af");
                     mPaint.setColor(mColorTask);
                     canvas.drawRect(left ,
                             topPre+ mTextSpac+ preTextLeading/3*t ,

@@ -28,7 +28,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
                     android:text="事件名称"
-                    android:textColor="#000000"
+                    android:textColor="#1a1919"
                     android:textSize="16dp" />
 
 
