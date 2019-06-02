@@ -10,100 +10,100 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class ScheduleController implements IGetSchedule{
-    private MyDatabaseController controller;
-    public ScheduleController(MyDatabaseController myDBC){
-        controller=myDBC;
+public class ScheduleController implements IGetSchedule {
+
+    public static ArrayList<Schedule> myScheduleList = new ArrayList<>();
+    public static Schedule schedule= null;
+    public ScheduleController() {
+
     }
 
     //获取目标天所有日程
-    public ArrayList<Schedule> getScheduleByDay(String date){
-        ArrayList<Schedule> myScheduleList=new ArrayList<>();
-        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Schedule","User");
-        SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+    public ArrayList<Schedule> getScheduleByDay(String date) {
+        ArrayList<Schedule> todayScheduleList = new ArrayList<>();
+        searchById(UserId.getInstance().getUserId());
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
         //目标日时间戳
-        long aimDate=0;
+        long aimDate = 0;
         try {
-            aimDate=sd.parse(date).getTime();
+            aimDate = sd.parse(date).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        while (cursor.moveToNext())
-        {
-            String scheduleDate=cursor.getString(cursor.getColumnIndex("StartTime"));
-            //日程时间戳
-            long scheduleTime=0;
+        for(int i=0;i<myScheduleList.size();i++){
+            long scheduleTime = 0;
             try {
-                scheduleTime=sd.parse(scheduleDate).getTime();
-            } catch (ParseException e) {
+                scheduleTime = sd.parse(myScheduleList.get(i).getscheduleStartTime()).getTime();
+            }catch (ParseException e){
                 e.printStackTrace();
             }
-            if(scheduleTime==aimDate)
-            {
-                Schedule mySchedule=new Schedule(cursor.getInt(cursor.getColumnIndex("Schedule_id")),cursor.getInt(cursor.getColumnIndex("Position")),
-                                cursor.getString(cursor.getColumnIndex("ScheduleName")),cursor.getString(cursor.getColumnIndex("StartTime")),
-                                cursor.getString(cursor.getColumnIndex("FinishTime")),cursor.getString(cursor.getColumnIndex("Remark")),
-                                cursor.getInt(cursor.getColumnIndex("IsRemind")));
-                myScheduleList.add(mySchedule);
+
+            if(scheduleTime==aimDate){
+                todayScheduleList.add(myScheduleList.get(i));
             }
         }
-        cursor.close();
-        controller.closeDB();
-        return myScheduleList;
+
+        return todayScheduleList;
     }
 
     //按照ScheduleId获取日程
-    public Schedule getScheduleById(int scheduleId){
-        Cursor cursor=controller.searchById(scheduleId,"Schedule","Schedule");
-        if(cursor.moveToNext()){
-            Schedule mySchedule=new Schedule(cursor.getInt(cursor.getColumnIndex("Schedule_id")),cursor.getInt(cursor.getColumnIndex("Position")),
-                    cursor.getString(cursor.getColumnIndex("ScheduleName")),cursor.getString(cursor.getColumnIndex("StartTime")),
-                    cursor.getString(cursor.getColumnIndex("FinishTime")),cursor.getString(cursor.getColumnIndex("Remark")),
-                    cursor.getInt(cursor.getColumnIndex("IsRemind")));
-            cursor.close();
-            controller.closeDB();
-            return mySchedule;
+    public Schedule getScheduleById(int scheduleId) {
+        Thread thread = new getScheduleByIdThread(scheduleId);
+        thread.start();  //执行线程
+        try {
+            thread.join();//等待线程执行结束后，主线程继续执行
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        cursor.close();
-        controller.closeDB();
-        return null;
+        return schedule;
     }
 
     //获取目标日schedule个数
-    public int getDBPosition(String startTime){
-        int count=0;
-        ArrayList<Schedule> myScheduleList=new ArrayList<>();
-        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Schedule","User");
-        SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+    public int getDBPosition(String startTime) {
+        int count = 0;
+        searchById(UserId.getInstance().getUserId());
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
         //目标日时间戳
-        long aimDate=0;
+        long aimDate = 0;
         try {
-            aimDate=sd.parse(startTime).getTime();
+            aimDate = sd.parse(startTime).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        while (cursor.moveToNext()) {
-            String scheduleDate = cursor.getString(cursor.getColumnIndex("StartTime"));
-            //日程时间戳
+        for(int i=0;i<myScheduleList.size();i++){
             long scheduleTime = 0;
             try {
-                scheduleTime = sd.parse(scheduleDate).getTime();
-            } catch (ParseException e) {
+                scheduleTime = sd.parse(myScheduleList.get(i).getscheduleStartTime()).getTime();
+            }catch (ParseException e){
                 e.printStackTrace();
             }
-            if (scheduleTime == aimDate) {
+
+            if(scheduleTime==aimDate){
                 count++;
             }
         }
-        cursor.close();
-        controller.closeDB();
+
         return count;
     }
 
-    public String getShareCode(int scheduleId){
-        Schedule schedule=getScheduleById(scheduleId);
-        String result="$"+schedule.getscheduleName()+"$"+schedule.getscheduleStartTime()+"$"+schedule.getscheduleStopTime()+"$"+schedule.getscheduleRemark()
-                +"$"+Integer.toString(schedule.getscheduleRemind())+"$";
+    public String getShareCode(int scheduleId) {
+        Schedule schedule = getScheduleById(scheduleId);
+        String result = "$" + schedule.getscheduleName() + "$" + schedule.getscheduleStartTime() + "$" + schedule.getscheduleStopTime() + "$" + schedule.getscheduleRemark()
+                + "$" + Integer.toString(schedule.getscheduleRemind()) + "$";
         return result;
     }
+
+    private void searchById(int userId) {
+        Thread thread = new getScheduleListThread(userId);
+        thread.start();  //执行登录验证线程
+        try {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }
