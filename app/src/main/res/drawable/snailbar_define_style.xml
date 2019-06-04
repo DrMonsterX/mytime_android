@@ -19,9 +19,9 @@
             <shape>
                 <corners android:radius="10dip" />
                 <gradient
-                    android:startColor="#031c61"
-                    android:centerColor="#9bc2e9"
-                    android:endColor="#031c61"
+                    android:startColor="#b2dfce"
+                    android:centerColor="#dcf1ee"
+                    android:endColor="#b2dfce"
                     android:centerY="0.45"
                     android:angle="270"/>
             </shape>

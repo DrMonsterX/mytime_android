@@ -149,7 +149,7 @@ public class StatisticActivity extends AppCompatActivity {
         mPieChart.setCenterText(generateCenterSpannableText());
 
         mPieChart.setDrawHoleEnabled(true);
-        mPieChart.setHoleColor(Color.rgb(244,243,228));
+        mPieChart.setHoleColor(Color.rgb(255,255,255));
 
         mPieChart.setTransparentCircleColor(Color.WHITE);
         mPieChart.setTransparentCircleAlpha(110);
@@ -210,13 +210,13 @@ public class StatisticActivity extends AppCompatActivity {
 
         //数据和颜色
         ArrayList<Integer> colors = new ArrayList<Integer>();
-       colors.add(Color.rgb(139 ,58 ,58));
-        colors.add(Color.rgb(244 ,164, 96));
+       colors.add(Color.rgb(6 ,83 ,54));
+        colors.add(Color.rgb(178 ,223, 206));
 
         dataSet.setColors(colors);
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(18f);
+        data.setValueTextSize(16f);
         data.setValueTextColor(Color.WHITE);
         mPieChart.setData(data);
         mPieChart.highlightValues(null);
@@ -242,7 +242,7 @@ public class StatisticActivity extends AppCompatActivity {
 
 
         String label = "";
-        barChartManager.showBarChart(yVals, label, Color.parseColor("#F4A460"));
+        barChartManager.showBarChart(yVals, label, Color.parseColor("#a8dbc8"));
     }
 
     private Context getContext(){return this;}

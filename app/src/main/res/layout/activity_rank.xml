@@ -132,8 +132,8 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/gray"
+        android:layout_height="12dp"
+        android:background="#d9d9d9"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -142,7 +142,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,19 +150,22 @@
 
         <TextView
             android:id="@+id/number"
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:paddingLeft="15dp"
             android:gravity="center"
             android:text="12"
-            android:textSize="30sp" />
+            android:textColor="#787777"
+            android:background="@drawable/user_rank"
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/userHead"
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp" />
+            android:paddingRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:id="@+id/userName"
@@ -172,9 +175,8 @@
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
             android:text="王之一"
-            android:textStyle="bold"
             android:textColor="@color/mainText"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/percent"
@@ -185,9 +187,8 @@
             android:gravity="center"
             android:paddingRight="30dp"
             android:text="90%"
-            android:textColor="@color/gray"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textColor="@color/mainText"
+            android:textSize="20sp"/>
     </LinearLayout>
 
 

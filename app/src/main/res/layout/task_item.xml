@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="百分数"
-                    android:textColor="#6e6e6e"
+                    android:textColor="#646464"
                     android:textSize="16dp" />
 
             </LinearLayout>
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                    android:layout_marginLeft="25dp"
                     android:text="开始时间"
-                    android:textColor="#6e6e6e"
+                    android:textColor="#646464"
                     android:textSize="16dp" />
                 <TextView
                     android:id="@+id/tv_taskStopTime"
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:text="结束时间"
-                    android:textColor="#6e6e6e"
+                    android:textColor="#646464"
                     android:textSize="16dp" />
             </LinearLayout>
         </LinearLayout>
@@ -80,12 +80,13 @@
         <com.example.dy.mytime.Activity.MyProcessBar
             android:id="@+id/taskProcessBar"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:maxHeight="18dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:thumb="@drawable/process1">
+            android:thumb="@drawable/process2">
         </com.example.dy.mytime.Activity.MyProcessBar>
     </LinearLayout>
 

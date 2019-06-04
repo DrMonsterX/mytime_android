@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#042248</color>
-    <color name="colorAccent">#f5020828</color>
+    <color name="colorPrimaryDark">#98d1bb</color>
+    <color name="colorAccent">#0b3d2c</color>
     <color name="mainText">#434343</color>
-    <color name="whiteText">#fffafa</color>
+    <color name="whiteText">#4b4b4b</color>
     <color name="black">#000000</color>
     <color name="yellow">#f1f0d2</color>
     <color name="gray">#686868</color>
@@ -14,8 +14,8 @@
     <color name="orange1">#f77c43</color>
 
     <color name="node">#acd0ea</color>
-    <color name="task1">#f185b3e4</color>
-    <color name="task2">#ed6997e1</color>
+    <color name="task1">#f1ef6b7a</color>
+    <color name="task2">#b2dfce</color>
     <color name="task3">#f59d9d</color>
     <color name="task4">#F5F5DC</color>
     <color name="task5">#f4d0af</color>

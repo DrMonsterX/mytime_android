@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".Activity.StatisticActivity">
 <!--顶部标题-->
     <android.support.constraint.ConstraintLayout
@@ -38,7 +37,6 @@
             android:text="@string/statistic"
             android:textColor="@color/whiteText"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/goUserBtn"
@@ -123,7 +121,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -203,7 +201,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="90dp"
                     android:text="0"
-                    android:textColor="#8B3A3A"
+                    android:textColor="#075336"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

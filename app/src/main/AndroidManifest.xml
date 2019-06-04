@@ -43,6 +43,10 @@
         <activity android:name=".Activity.CalendarActivity" />
         <activity android:name=".Activity.ScheduleListActivity"/>
         <activity android:name=".Activity.TaskTagActivity"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

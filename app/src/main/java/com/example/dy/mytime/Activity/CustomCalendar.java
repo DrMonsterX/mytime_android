@@ -343,8 +343,8 @@ public class CustomCalendar extends View{
                 int taskcolors[]={taskDraw.taskcolor1,taskDraw.taskcolor2,taskDraw.taskcolor3};
                 for(int t = 0; t<3; t++){
                     if ( taskcolors[t]==0) continue;//修改了颜色
-                    else if ( taskcolors[t]==1) mColorTask= Color.parseColor("#f185b3e4");
-                    else if ( taskcolors[t]==2) mColorTask= Color.parseColor("#ed6997e1");
+                    else if ( taskcolors[t]==1) mColorTask= Color.parseColor("#f1ef6b7a");
+                    else if ( taskcolors[t]==2) mColorTask= Color.parseColor("#b2dfce");
                     else if ( taskcolors[t]==3) mColorTask=Color.parseColor("#f59d9d");
                     else if ( taskcolors[t]==4) mColorTask=Color.parseColor("#F5F5DC");
                     else if ( taskcolors[t]==5) mColorTask=Color.parseColor("#f4d0af");

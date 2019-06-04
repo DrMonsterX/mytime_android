@@ -34,9 +34,9 @@ public class MyProcessBar extends android.support.v7.widget.AppCompatSeekBar {
     private void init() {
         this.setMax(100);
         this.setThumbOffset(dip2px(getContext(), 0));
-       // this.setBackgroundResource(R.drawable.sbg);
+        this.setBackgroundResource(R.drawable.sbg);
         int padding = dip2px(getContext(),(float)0.5);
-        //this.setPadding(padding*4, padding, padding*4, padding);
+        this.setPadding(padding*20, 0, padding*20, 0);
         this.setProgressDrawable(getResources().getDrawable(R.drawable.snailbar_define_style));
     }
 

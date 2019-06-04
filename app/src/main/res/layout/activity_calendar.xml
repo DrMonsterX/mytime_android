@@ -40,8 +40,8 @@
         app:mSelectTextColor="#ffffff"
         app:mSelectWeekTextColor="@color/colorPrimaryDark"
         app:mTextColorDay="#686768"
-        app:mTextColorMonth="#ffffff"
-        app:mTextColorWeek="#9e9e9d"
+        app:mTextColorMonth="#4e4e4e"
+        app:mTextColorWeek="#8f8f8f"
         app:mTextSizeDay="17sp"
         app:mTextSizeMonth="20sp"
         app:mTextSizePre="18sp"
@@ -85,7 +85,7 @@
             android:gravity="center|bottom"
             android:paddingBottom="4dp"
             android:text="日历"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/mainText"
             android:textSize="12sp"
             android:textStyle="bold" />
 

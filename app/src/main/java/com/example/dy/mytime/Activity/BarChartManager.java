@@ -43,13 +43,13 @@ public class BarChartManager {
     private void initLineChart() {
         mFormat = new DecimalFormat("#,###.##");
         //背景颜色
-        mBarChart.setBackgroundColor(Color.rgb(244,243,228));
+        mBarChart.setBackgroundColor(Color.rgb(255,255,255));
         //是否显示网格背景
         mBarChart.setDrawGridBackground(false);
         //显示每条背景阴影
         mBarChart.setDrawBarShadow(false);
         //设置图标边框的颜色
-        mBarChart.setBorderColor(Color.parseColor("#8B3A3A"));
+        mBarChart.setBorderColor(Color.parseColor("#075336"));
 //        mBarChart.setHighlightFullBarEnabled(false);
         mBarChart.setTouchEnabled(false); // 所有触摸事件,默认true
         mBarChart.setDragEnabled(true);    // 可拖动,默认true
@@ -94,7 +94,7 @@ public class BarChartManager {
         leftAxis.setDrawGridLines(false);
         rightAxis.setAxisMinimum(0f);
         leftAxis.setAxisMinimum(0f);
-        leftAxis.setTextColor(Color.parseColor("#8B3A3A"));
+        leftAxis.setTextColor(Color.parseColor("#075336"));
 //        // 线跟数据都不显示
         rightAxis.setEnabled(false); //右侧Y轴不显示
     }
@@ -110,7 +110,7 @@ public class BarChartManager {
         barDataSet.setDrawValues(true);
 //        文字的大小
         barDataSet.setValueTextSize(12f);
-        barDataSet.setValueTextColor(Color.parseColor("#8B3A3A"));
+        barDataSet.setValueTextColor(Color.parseColor("#075336"));
         barDataSet.setFormLineWidth(2f);
         barDataSet.setFormSize(15.0f);
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
@@ -125,12 +125,12 @@ public class BarChartManager {
         xAxis.setDrawLabels(true);
         IAxisValueFormatter xAxisFormatter = new XAxisValueFormatter(xValues);
         xAxis.setValueFormatter(xAxisFormatter);
-        xAxis.setTextColor(Color.parseColor("#8B3A3A"));
-        xAxis.setAxisLineColor(Color.parseColor("#8B3A3A"));
+        xAxis.setTextColor(Color.parseColor("#075336"));
+        xAxis.setAxisLineColor(Color.parseColor("#075336"));
         IAxisValueFormatter custom = new MyYAxisValueFormatter(yValues);
         leftAxis.setValueFormatter(custom);
 //        leftAxis.setLabelCount(yValues.length + 1, false);
-        leftAxis.setAxisLineColor(Color.parseColor("#8B3A3A"));
+        leftAxis.setAxisLineColor(Color.parseColor("#075336"));
 //        设置Y轴的最小值和最大值
         leftAxis.setAxisMaximum(100f);
         leftAxis.setAxisMinimum(0f);
