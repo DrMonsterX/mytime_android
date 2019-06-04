@@ -45,8 +45,8 @@
 
         <ImageButton
             android:id="@+id/addScheduleBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:background="@drawable/addtask_icon"

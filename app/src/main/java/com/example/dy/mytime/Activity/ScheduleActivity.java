@@ -120,7 +120,7 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleName= (TextView) findViewById(R.id.scheduleName);
         scheduleRemark= (TextView) findViewById(R.id.scheduleRemark);
 
-        scheduleTime.setText(schedule.getscheduleStartTime()+"--"+schedule.getscheduleStopTime());
+        scheduleTime.setText(schedule.getscheduleStartTime()+" —— "+schedule.getscheduleStopTime());
         scheduleName.setText(schedule.getscheduleName());
         scheduleRemark.setText(schedule.getscheduleRemark());
 

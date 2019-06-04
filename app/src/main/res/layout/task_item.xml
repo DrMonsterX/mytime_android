@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/schedule"
+        android:background="@color/task1"
         android:padding="4dp">
 
 
@@ -36,19 +36,18 @@
                     android:id="@+id/tv_taskName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
                     android:layout_weight="1"
                     android:text="事件名称"
-                    android:textColor="#000000"
-                    android:textSize="16dp" />
+                    android:textColor="#f7080808"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tv_taskPercentage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="百分数"
-                    android:textColor="#888888"
-                    android:textSize="14dp" />
+                    android:textColor="#6e6e6e"
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
@@ -63,26 +62,27 @@
                     android:id="@+id/tv_taskStartTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   android:layout_marginLeft="4dp"
+                   android:layout_marginLeft="25dp"
                     android:text="开始时间"
-                    android:textColor="#888888"
-                    android:textSize="14dp" />
+                    android:textColor="#6e6e6e"
+                    android:textSize="16dp" />
                 <TextView
                     android:id="@+id/tv_taskStopTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:text="结束时间"
-                    android:textColor="#888888"
-                    android:textSize="14dp" />
+                    android:textColor="#6e6e6e"
+                    android:textSize="16dp" />
             </LinearLayout>
         </LinearLayout>
 
         <com.example.dy.mytime.Activity.MyProcessBar
             android:id="@+id/taskProcessBar"
             android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_marginTop="2dp"
+            android:layout_height="40dp"
+            android:maxHeight="18dp"
+            android:layout_marginTop="4dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:thumb="@drawable/process1">

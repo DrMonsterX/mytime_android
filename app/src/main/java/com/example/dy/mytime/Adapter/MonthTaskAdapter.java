@@ -50,11 +50,11 @@ public class MonthTaskAdapter extends RecyclerView.Adapter<MonthTaskAdapter.Mont
         holder.tv_monthTaskName.setText(task.gettaskName());
         holder.tv_monthTaskStartTime.setText(task.gettaskStartTime());
         holder.tv_monthTaskStopTime.setText(task.gettaskStopTime());
-        if (task.gettaskTag().equals("默认")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#acdff9"));
-        else if (task.gettaskTag().equals("追星")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#8bd8f9"));
-        else if (task.gettaskTag().equals("恋爱")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#73c2f5"));
-        else if (task.gettaskTag().equals("日常")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#6dc1f7"));
-        else if (task.gettaskTag().equals("工作")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#58b7ef"));
+        if (task.gettaskTag().equals("默认")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#f185b3e4"));//修改了颜色
+        else if (task.gettaskTag().equals("追星")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#ed6997e1"));
+        else if (task.gettaskTag().equals("恋爱")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#f59d9d"));
+        else if (task.gettaskTag().equals("日常")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#F5F5DC"));
+        else if (task.gettaskTag().equals("工作")) holder.la_monthTask_bg.setBackgroundColor(Color.parseColor("#f4d0af"));
 
         if (mItemClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {

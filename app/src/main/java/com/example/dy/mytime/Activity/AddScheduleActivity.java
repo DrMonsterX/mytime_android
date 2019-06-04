@@ -68,7 +68,7 @@ public class AddScheduleActivity extends AppCompatActivity {
     }
 
     protected boolean isShouldHideKeyBord(View v, MotionEvent ev) {
-        if (v != null && (v instanceof EditText)) {
+        if (v != null && (v instanceof EditText)) {//OIOJOIJOIJOJOI
             int[] l = {0, 0};
             v.getLocationInWindow(l);
             int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
