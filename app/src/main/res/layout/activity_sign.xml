@@ -140,6 +140,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
+        <!--<新增：单个头像以及上传头像按钮-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/linearLayout2"-->
+            <!--android:orientation="vertical"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content" >-->
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView1"-->
+                <!--android:layout_width="150dp"-->
+                <!--android:layout_height="150dp"-->
+                <!--android:src="@drawable/headshot1" />-->
+            <!--<Button-->
+                <!--android:id="@+id/picButton"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/button_shape"-->
+                <!--android:text=" 选 择 头 像 "-->
+                <!--android:textSize="18sp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/whiteText"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.497"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/newIdText" />-->
+        <!--</LinearLayout>-->
 
         <TableRow>
 
@@ -170,8 +198,6 @@
                 android:layout_height="110dp"
                 android:background="@drawable/headshot4" />
         </TableRow>
-
-
     </TableLayout>
 
     <RadioGroup
