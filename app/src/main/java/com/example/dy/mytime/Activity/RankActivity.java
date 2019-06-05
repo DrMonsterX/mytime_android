@@ -100,7 +100,7 @@ public class RankActivity extends AppCompatActivity {
 
         MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
         MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        FollowController myUC=new FollowController(dbCon);
+        FollowController myUC=new FollowController();
         /*数据库得到排名列表*/
         ArrayList<User> myRank=myUC.getRank();
         ranklist.clear();
@@ -131,7 +131,7 @@ public class RankActivity extends AppCompatActivity {
         userName=(TextView) findViewById(R.id.userName);
         userName.setText(user.getUserName());
 
-        UserController myUC2=new UserController(dbCon);
+        UserController myUC2=new UserController();
         percent=(TextView) findViewById(R.id.percent);
         percent.setText((myUC2.getWeekCompleteness(user.getUserID())+"%"));
 

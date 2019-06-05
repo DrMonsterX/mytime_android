@@ -146,9 +146,9 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //弹窗
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                ScheduleController mySTC=new ScheduleController(dbCon);
+//                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                ScheduleController mySTC=new ScheduleController();
                 String myShareCode=mySTC.getShareCode(schedule.getscheduleID());
                 AlertDialog.Builder builder= new AlertDialog.Builder(ScheduleActivity.this,R.style.dialog_style);
 
@@ -166,9 +166,9 @@ public class ScheduleActivity extends AppCompatActivity {
 
     /*数据库得到ID为scheduleID的日程*/
     private void initData(int scheduleID) {
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        ScheduleController mySC=new ScheduleController(dbCon);
+//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+        ScheduleController mySC=new ScheduleController();
         schedule=mySC.getScheduleById(scheduleID);
     }
 

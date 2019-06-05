@@ -129,9 +129,9 @@ public class RegisterActivity extends AppCompatActivity implements CompoundButto
                 {
 
                     /*数据库添加用户*/
-                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                    RegistController myUC=new RegistController(dbCon);
+//                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                    RegistController myUC=new RegistController();
                     int myId=0;
                     myId=myUC.register(name.getText().toString(),num,newPassword.getText().toString());
 

@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
@@ -32,7 +33,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private EditText newPass;
     private EditText ensurePass;
     private User user;
-
+    public static int return_code;
     @CallSuper
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -69,9 +70,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        UserController myUC=new UserController(dbCon);
+//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+        UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());
 
@@ -107,26 +108,56 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 }
                 else if(newPass.getText().toString().equals(ensurePass.getText().toString()))//两次密码输入一致时
                 {
-                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                    PasswordController myUC=new PasswordController(dbCon);
+//                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                    PasswordController myUC=new PasswordController();
                     /*数据库修改密码*/
                     myUC.changePassword(newPass.getText().toString());
-                    AlertDialog.Builder builder= new AlertDialog.Builder(ChangePasswordActivity.this,R.style.dialog_style);
+                    //新增，根据修改密码调用的返回码显示不同提示内容
+                    switch(return_code) {
+                        case -1:
+                            // code block
+                            AlertDialog.Builder builder= new AlertDialog.Builder(ChangePasswordActivity.this,R.style.dialog_style);
+                            builder.setTitle("提示");//提示框标题
+                            builder.setMessage("\n  调用失败");//提示内容确定按钮
+                            builder.create().show();
+                            break;
+                        case 0:
+                            // code block
+                            AlertDialog.Builder builder0= new AlertDialog.Builder(ChangePasswordActivity.this,R.style.dialog_style);
+                            builder0.setTitle("提示");//提示框标题
+                            builder0.setMessage("\n  失败");//提示内容确定按钮
+                            builder0.create().show();
+                            break;
+                        case 1:
+                            AlertDialog.Builder builder1= new AlertDialog.Builder(ChangePasswordActivity.this,R.style.dialog_style);
 
-                    builder.setTitle("提示");//提示框标题
-                    builder.setMessage("\n  您已成功修改密码！");//提示内容
+                            builder1.setTitle("提示");//提示框标题
+                            builder1.setMessage("\n  您已成功修改密码！");//提示内容
 
-                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            builder1.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //TODO Auto-generated method stub
-                            ChangePasswordActivity.this.finish();
-                        }
-                    });//确定按钮
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //TODO Auto-generated method stub
+                                    ChangePasswordActivity.this.finish();
+                                }
+                            });//确定按钮
 
-                    builder.create().show();
+                            builder1.create().show();
+                            break;
+                        case 2:
+                            // code block
+                            AlertDialog.Builder builder2= new AlertDialog.Builder(ChangePasswordActivity.this,R.style.dialog_style);
+                            builder2.setTitle("提示");//提示框标题
+                            builder2.setMessage("\n  用户id不存在");//提示内容确定按钮
+                            builder2.create().show();
+                            break;
+                        default:
+                            // code block
+                    }
+
+
                 }
 
                 else{
@@ -146,4 +177,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     }
     private Context getContext(){return this;}
+
+
+
+
 }
+

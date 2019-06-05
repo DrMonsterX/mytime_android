@@ -107,9 +107,9 @@ public class AttentionActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                    UserController myUC=new UserController(dbCon);
+//                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                    UserController myUC=new UserController();
                     User searchUser=myUC.getUser(Integer.parseInt(query));
                     /*数据库搜索ID为query的用户，添加到searchlist*/
                     searchlist.clear();

@@ -169,9 +169,9 @@ public class ScheduleListActivity extends AppCompatActivity {
 
     private void initData(String dayStr) {
         schlist.clear();
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        ScheduleController mySC=new ScheduleController(dbCon);
+//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+        ScheduleController mySC=new ScheduleController();
 
         /*数据库得到nowDay日期的日程列表*/
         ArrayList<Schedule> todaySchedule=mySC.getScheduleByDay(dayStr);
@@ -215,9 +215,9 @@ public class ScheduleListActivity extends AppCompatActivity {
             //滑动事件
 
             Collections.swap(schlist,viewHolder.getAdapterPosition(),target.getAdapterPosition());
-            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-            SortScheduleController mySC=new SortScheduleController(dbCon);
+//            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+            SortScheduleController mySC=new SortScheduleController();
             /*数据库日程列表交换位置*/
             for(int i=0;i<schlist.size();i++)
             {
@@ -256,10 +256,10 @@ public class ScheduleListActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //TODO Auto-generated method stub
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                SortScheduleController mySC=new SortScheduleController(dbCon);
-                DeleteScheduleController myDSC=new DeleteScheduleController(dbCon);
+//                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                SortScheduleController mySC=new SortScheduleController();
+                DeleteScheduleController myDSC=new DeleteScheduleController();
                 /*数据库删除日程*/
                 myDSC.deleteSchedule(schlist.get(position).getscheduleID());
                 schlist.remove(position);//修改list内容

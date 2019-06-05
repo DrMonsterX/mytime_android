@@ -84,7 +84,7 @@ public class UserHomepageActivity extends AppCompatActivity {
 
         MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
         MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        UserController myUC=new UserController(dbCon);
+        UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());
 
@@ -137,7 +137,7 @@ public class UserHomepageActivity extends AppCompatActivity {
 
         /*数据库得到关注列表*/
         attentionlist.clear();
-        FollowController myFC=new FollowController(dbCon);
+        FollowController myFC=new FollowController();
         ArrayList<User> myFollow=myFC.getFollow(UserId.getInstance().getUserId());
         attentionlist.addAll(myFollow);
 

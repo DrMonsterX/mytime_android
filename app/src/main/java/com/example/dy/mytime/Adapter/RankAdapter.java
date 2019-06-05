@@ -54,7 +54,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
     public void onBindViewHolder( RankAdapter.RankViewHolder holder, final int position) {
         MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
         MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        UserController myUC=new UserController(dbCon);
+        UserController myUC=new UserController();
         User user = list.get(position);
         holder.userName.setText(user.getUserName());
         holder.number.setText(position+1+"");

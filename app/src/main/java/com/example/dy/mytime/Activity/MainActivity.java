@@ -15,8 +15,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.UserPackage.LoginController;
 import com.example.dy.mytime.UserPackage.UserId;
@@ -66,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MyDatabaseHelper dbHelper;
-        dbHelper=new MyDatabaseHelper(this, "OurAPP.db", null, 1);
-        SQLiteDatabase db=dbHelper.getWritableDatabase();
-        db.close();
+//        MyDatabaseHelper dbHelper;
+//        dbHelper=new MyDatabaseHelper(this, "OurAPP.db", null, 1);
+//        SQLiteDatabase db=dbHelper.getWritableDatabase();
+//        db.close();
 
         id = (EditText) findViewById(R.id.newIdText);
         password = (EditText) findViewById(R.id.newPasswordText);
@@ -108,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
                     builder.create().show();
                 }
                 else {
-                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                    LoginController myUC=new LoginController(dbCon);
+//                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                    LoginController myUC=new LoginController();
                     int checkResult=myUC.checkLogin(Integer.parseInt(id.getText().toString()),password.getText().toString());
                     if(checkResult==0) {
                         UserId userId=UserId.getInstance();

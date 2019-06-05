@@ -6,24 +6,23 @@ import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
 
 public class UserController implements IGetUser{
     private MyDatabaseController controller;
-    public UserController(MyDatabaseController myDBC){
-        controller=myDBC;
+    public UserController(){
+//        controller=myDBC;
     }
 
     //获取目标ID用户
     public User getUser(int userId){
-        Cursor cursor=controller.searchById(userId,"User","User");
-        if(cursor.moveToNext()){
-            User user=new User(cursor.getInt(cursor.getColumnIndex("User_id")),cursor.getString(cursor.getColumnIndex("UserName")),
-                    cursor.getInt(cursor.getColumnIndex("Icon_id")),cursor.getString(cursor.getColumnIndex("Password")),
-                    cursor.getInt(cursor.getColumnIndex("Completeness_id")));
-            cursor.close();
-            controller.closeDB();
-            return user;
+        Thread thread=new LoginThread(userId);
+        thread.start();  //执行登录验证线程
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
         }
-        cursor.close();
-        controller.closeDB();
-        return null;
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        return LoginController.user;
     }
 
     //获取用户本周完成度

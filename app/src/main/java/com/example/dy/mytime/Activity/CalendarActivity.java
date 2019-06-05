@@ -314,9 +314,9 @@ public class CalendarActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 //TODO Auto-generated method stub
 
-                                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                                AddScheduleController mySC=new AddScheduleController(dbCon);
+//                                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+//                                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                                AddScheduleController mySC=new AddScheduleController();
                                 mySC.addScheduleByString(new1);
                                 /*清空剪切板，防止重复添加**/
                                 clipboard.setPrimaryClip(ClipData.newPlainText(null, ""));
