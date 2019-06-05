@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements CompoundButto
     private EditText name,newPassword,ensurePassword;
     private int num=0;
     private Button registerButton;
+    private boolean isoncl=true;
 
 
 
@@ -71,6 +72,7 @@ public class RegisterActivity extends AppCompatActivity implements CompoundButto
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
+        isoncl=true;
 
         box1 = (RadioButton) findViewById(R.id.box1);
         box2 = (RadioButton) findViewById(R.id.box2);
@@ -103,69 +105,65 @@ public class RegisterActivity extends AppCompatActivity implements CompoundButto
             @Override
 
             public void onClick(View v) {
+                if(isoncl) {
 
-                if(name.getText().toString().trim().isEmpty()){
-                    AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this,R.style.dialog_style);
+                    if (name.getText().toString().trim().isEmpty()) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.dialog_style);
 
-                    builder.setTitle("提示");//提示框标题
-                    builder.setMessage("\n  请输入用户名！");//提示内容
+                        builder.setTitle("提示");//提示框标题
+                        builder.setMessage("\n  请输入用户名！");//提示内容
 
-                    builder.setPositiveButton("确定",null);//确定按钮
+                        builder.setPositiveButton("确定", null);//确定按钮
 
-                    builder.create().show();
-                }
-                else if(newPassword.getText().toString().trim().isEmpty()){
-                    AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this,R.style.dialog_style);
+                        builder.create().show();
+                    } else if (newPassword.getText().toString().trim().isEmpty()) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.dialog_style);
 
-                    builder.setTitle("提示");//提示框标题
-                    builder.setMessage("\n  请输入密码！");//提示内容
+                        builder.setTitle("提示");//提示框标题
+                        builder.setMessage("\n  请输入密码！");//提示内容
 
-                    builder.setPositiveButton("确定",null);//确定按钮
+                        builder.setPositiveButton("确定", null);//确定按钮
 
-                    builder.create().show();
-                }
-
-                else if(newPassword.getText().toString().equals(ensurePassword.getText().toString()))//两次密码输入一致时
-                {
-
-                    /*数据库添加用户*/
+                        builder.create().show();
+                    } else if (newPassword.getText().toString().equals(ensurePassword.getText().toString()))//两次密码输入一致时
+                    {
+                        isoncl=false;
+                        /*数据库添加用户*/
 //                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
 //                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                    RegistController myUC=new RegistController();
-                    int myId=0;
-                    myId=myUC.register(name.getText().toString(),num,newPassword.getText().toString());
+                        RegistController myUC = new RegistController();
+                        int myId = 0;
+                        myId = myUC.register(name.getText().toString(), num, newPassword.getText().toString());
 
+                        //注册成功提示框
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.dialog_style);
+                        builder.setTitle("提示");//提示框标题
+                        builder.setMessage("     您已注册成功！快快登陆吧！   您的id为 " + myId);//提示内容
+                        /*返回id信息*/
 
+                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
-                    //注册成功提示框
-                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.dialog_style);
-                    builder.setTitle("提示");//提示框标题
-                    builder.setMessage("     您已注册成功！快快登陆吧！   您的id为 "+myId);//提示内容
-                                                                 /*返回id信息*/
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                //TODO Auto-generated method stub
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });//确定按钮
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        builder.create().show();
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.dialog_style);
 
-                            //TODO Auto-generated method stub
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-                    });//确定按钮
+                        builder.setTitle("提示");//提示框标题
+                        builder.setMessage("\n  两次密码输入不一致！");//提示内容
 
-                    builder.create().show();
-                }
+                        builder.setPositiveButton("确定", null);//确定按钮
 
-                else{
-                    AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this,R.style.dialog_style);
+                        builder.create().show();
 
-                    builder.setTitle("提示");//提示框标题
-                    builder.setMessage("\n  两次密码输入不一致！");//提示内容
-
-                    builder.setPositiveButton("确定",null);//确定按钮
-
-                    builder.create().show();
+                    }
 
                 }
             }
