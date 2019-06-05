@@ -102,33 +102,33 @@ public class TaskController implements IGetTask{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Task","User");
-        while(cursor.moveToNext()){
-            long taskTimeS=0;
-            long taskTimeE=0;
-            String taskStartTime=cursor.getString(cursor.getColumnIndex("StartTime"));
-            String taskEndTime=cursor.getString(cursor.getColumnIndex("FinishTime"));
-            try {
-                taskTimeS=sd.parse(taskStartTime).getTime();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            try {
-                taskTimeE=sd.parse(taskEndTime).getTime();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            if(aimTime==taskTimeS||aimTime==taskTimeE) {
-                Task task=new Task(cursor.getInt(cursor.getColumnIndex("Task_id")),cursor.getString(cursor.getColumnIndex("TaskName")),
-                        cursor.getString(cursor.getColumnIndex("StartTime")),cursor.getString(cursor.getColumnIndex("FinishTime")),
-                        cursor.getString(cursor.getColumnIndex("Remark")),cursor.getInt(cursor.getColumnIndex("IsRemind")),
-                        cursor.getInt(cursor.getColumnIndex("IsComplete")),cursor.getString(cursor.getColumnIndex("Tag")),
-                        cursor.getInt(cursor.getColumnIndex("Position")));
-                allTask.add(task);
-            }
-        }
-        cursor.close();
-        controller.closeDB();
+//        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Task","User");
+//        while(cursor.moveToNext()){
+//            long taskTimeS=0;
+//            long taskTimeE=0;
+//            String taskStartTime=cursor.getString(cursor.getColumnIndex("StartTime"));
+//            String taskEndTime=cursor.getString(cursor.getColumnIndex("FinishTime"));
+//            try {
+//                taskTimeS=sd.parse(taskStartTime).getTime();
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                taskTimeE=sd.parse(taskEndTime).getTime();
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//            if(aimTime==taskTimeS||aimTime==taskTimeE) {
+//                Task task=new Task(cursor.getInt(cursor.getColumnIndex("Task_id")),cursor.getString(cursor.getColumnIndex("TaskName")),
+//                        cursor.getString(cursor.getColumnIndex("StartTime")),cursor.getString(cursor.getColumnIndex("FinishTime")),
+//                        cursor.getString(cursor.getColumnIndex("Remark")),cursor.getInt(cursor.getColumnIndex("IsRemind")),
+//                        cursor.getInt(cursor.getColumnIndex("IsComplete")),cursor.getString(cursor.getColumnIndex("Tag")),
+//                        cursor.getInt(cursor.getColumnIndex("Position")));
+//                allTask.add(task);
+//            }
+//        }
+//        cursor.close();
+//        controller.closeDB();
         return allTask;
     }
 }

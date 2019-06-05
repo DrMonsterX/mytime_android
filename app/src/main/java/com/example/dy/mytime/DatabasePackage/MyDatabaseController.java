@@ -19,6 +19,23 @@ public class MyDatabaseController {
         return cursor;
     }
 
+//搜索本地登录数据
+    public Cursor searchId()
+    {
+        db=dbHelper.getWritableDatabase();
+        String cmd="select * from User";
+        Cursor cursor=db.rawQuery(cmd,null);
+        return cursor;
+    }
+
+    //插入用户id
+    public void InsertID(String userId){
+
+    }
+
+
+
+
     //获取当前表内的所有项
     public Cursor searchAll(String tablename){
         db=dbHelper.getWritableDatabase();
@@ -95,6 +112,14 @@ public class MyDatabaseController {
         db.execSQL(cmd);
         db.close();
     }
+
+    public void deleteId(){
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        String cmd="delete from User";
+        db.execSQL(cmd);
+        db.close();
+    }
+
 
     public void closeDB(){
         db.close();

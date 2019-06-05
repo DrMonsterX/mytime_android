@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,10 +82,11 @@ public class SearchUserAdapter extends RecyclerView.Adapter<SearchUserAdapter.Se
             }
         }
 
-        if (user.getIconID()==1) holder.userImage.setBackgroundResource(R.drawable.headshot1);
-        else if (user.getIconID()==2) holder.userImage.setBackgroundResource(R.drawable.headshot2);
-        else if (user.getIconID()==3) holder.userImage.setBackgroundResource(R.drawable.headshot3);
-        else if (user.getIconID()==4) holder.userImage.setBackgroundResource(R.drawable.headshot4);
+        Log.e("icon",Integer.toString(user.getIconID()));
+        if (user.getIconID()==1) holder.userImage.setImageResource(R.drawable.headshot1);
+        else if (user.getIconID()==2) holder.userImage.setImageResource(R.drawable.headshot2);
+        else if (user.getIconID()==3) holder.userImage.setImageResource(R.drawable.headshot3);
+        else if (user.getIconID()==4) holder.userImage.setImageResource(R.drawable.headshot4);
 
         holder.attention_btn.setOnClickListener(new View.OnClickListener() {
             @Override

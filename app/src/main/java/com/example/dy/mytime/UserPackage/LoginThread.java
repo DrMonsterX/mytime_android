@@ -35,10 +35,10 @@ public class LoginThread extends Thread {
                     JSONObject jsonObject = new JSONObject(result);
                     int id = jsonObject.optInt("userId");
                     String name=jsonObject.optString("name");
-                    int iconid=jsonObject.optInt("iconId");
+                    int iconId=jsonObject.optInt("iconId");
                     String password=jsonObject.optString("password");
                     int completenessId=jsonObject.optInt("completenessId");
-                    User user=new User(id,name,iconid,password,completenessId);
+                    User user=new User(id,name,iconId,password,completenessId);
                     LoginController.user=user;
                 }catch (JSONException e){
                     e.printStackTrace();

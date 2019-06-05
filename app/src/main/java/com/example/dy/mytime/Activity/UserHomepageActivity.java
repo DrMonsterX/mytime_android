@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -87,8 +88,6 @@ public class UserHomepageActivity extends AppCompatActivity {
         UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());
-
-
         retrunButton=(ImageButton)findViewById(R.id.returnBtn);
         addAttentionButton=(Button) findViewById(R.id.addAttBtn);
         changeButton = (TextView) findViewById(R.id.changePasswordView);
@@ -130,6 +129,10 @@ public class UserHomepageActivity extends AppCompatActivity {
         backToMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                dbCon.deleteId();
+
                 Intent intent = new Intent(UserHomepageActivity.this, MainActivity.class);
                 startActivity(intent);
             }

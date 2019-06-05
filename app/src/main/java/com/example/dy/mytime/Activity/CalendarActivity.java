@@ -106,10 +106,10 @@ public class CalendarActivity extends AppCompatActivity {
         TaskController myTC=new TaskController(dbCon);
         CalendarColorController myCC=new CalendarColorController(dbCon);
         /*数据库得到本月nowMonth的任务列表*/
-        ArrayList<Task> myMonthTask=myTC.getTaskByMonth(nowMonth);
+    //    ArrayList<Task> myMonthTask=myTC.getTaskByMonth(nowMonth);
         /*获得本月即nowMonth的任务色块（每天三种颜色）*/
         ArrayList<TaskDraw> monthDraw=new ArrayList<>();
-        monthDraw=myCC.getColorByMonth(myMonthTask,nowMonth);
+    //    monthDraw=myCC.getColorByMonth(myMonthTask,nowMonth);
         final List<TaskDraw> taskdrawlist = new ArrayList<>();
         taskdrawlist.addAll(monthDraw);
 
@@ -192,7 +192,7 @@ public class CalendarActivity extends AppCompatActivity {
 
         /*数据库得到本月nowMonth的任务列表*/
         mtasklist.clear();
-        mtasklist.addAll(myMonthTask);
+      //  mtasklist.addAll(myMonthTask);
 
         rv = (RecyclerView) findViewById(R.id.rv);
         mEmptyTextView = (TextView) findViewById(R.id.empty_text_view);
