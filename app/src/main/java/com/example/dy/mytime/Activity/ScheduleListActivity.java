@@ -83,7 +83,8 @@ public class ScheduleListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+//跳转关闭
+        /*
         goTask=(TextView)findViewById(R.id.goTask);
         goTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +102,7 @@ public class ScheduleListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
