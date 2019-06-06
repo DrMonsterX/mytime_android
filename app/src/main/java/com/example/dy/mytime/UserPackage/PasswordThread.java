@@ -25,7 +25,7 @@ public class PasswordThread extends Thread{
 
         public void run() {
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(path+Integer.toString(UserId.getInstance().getUserId())+"&password="+password).build();
+            Request request = new Request.Builder().url(path+Integer.toString(UserId.getInstance().getUserId())+"&password="+Integer.toString(password.hashCode())).build();
             try {
                 Response response = client.newCall(request).execute();//发送请求
                 String result = response.body().string();

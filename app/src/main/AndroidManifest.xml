@@ -46,7 +46,6 @@
         <activity android:name=".Activity.ScheduleListActivity"/>
         <activity android:name=".Activity.TaskTagActivity"/>
 
-        <receiver android:name=".SchedulePackage.AlarmBroadcast" android:process=":remote" />
     </application>
 
 

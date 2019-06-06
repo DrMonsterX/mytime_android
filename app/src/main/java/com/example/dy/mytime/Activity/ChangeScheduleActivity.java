@@ -300,7 +300,6 @@ public class ChangeScheduleActivity extends AppCompatActivity {
         remindButton = (ImageButton) findViewById(R.id.scheduleRemindBtn);
         remindButton.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View v) {
                 AlertDialog.Builder builder= new AlertDialog.Builder(ChangeScheduleActivity.this,R.style.dialog_style);
                 builder.setTitle("请选择提醒方式");//提示框标题

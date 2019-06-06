@@ -1,7 +1,9 @@
 package com.example.dy.mytime.Activity;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,11 +22,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.SchedulePackage.AddScheduleController;
-import com.example.dy.mytime.SchedulePackage.ScheduleController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,7 +52,8 @@ public class AddScheduleActivity extends AppCompatActivity {
     private Calendar calendar;// 用来装日期
     private DatePickerDialog dialog;
     private TimePickerDialog timePickerDialog;
-
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
 
     @CallSuper
     @Override
@@ -182,6 +182,9 @@ public class AddScheduleActivity extends AppCompatActivity {
                                 repeatNum=getDayOfWeek();
                             else repeatNum=getDayOfMonth();
 
+                            SimpleDateFormat mydf = new SimpleDateFormat("yyyy-MM-dd");
+                            String nowDay = mydf.format(new Date());
+
                             for(int i=0;i<repeatNum;i++){
                                 mySC.addSchedule(scheduleName.getText().toString(),startTime,stopTime,remark.getText().toString(),remindNum);
                                 addDate();
@@ -189,8 +192,6 @@ public class AddScheduleActivity extends AppCompatActivity {
 
                             Intent intent = new Intent();
                             Bundle bundle = new Bundle();
-                            SimpleDateFormat mydf = new SimpleDateFormat("yyyy-MM-dd");
-                            String nowDay = mydf.format(new Date());
                             bundle.putString("dayStr", nowDay);
                             intent.putExtras(bundle);
                             intent.setClass(AddScheduleActivity.this, ScheduleListActivity.class);

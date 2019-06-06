@@ -27,7 +27,7 @@ public class RegistTread extends Thread{
 
     public void run() {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(path+name+"&iconId="+iconId+"&password="+code).build();
+        Request request = new Request.Builder().url(path+name+"&iconId="+iconId+"&password="+Integer.toString(code.hashCode())).build();
         try {
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body().string();

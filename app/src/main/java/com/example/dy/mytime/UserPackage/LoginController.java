@@ -22,11 +22,14 @@ public class LoginController extends UserController implements ILogin {
             e.printStackTrace();
         }
 
+
+
+
         if(user==null) {
             //用户ID无效
             return 2;
         }
-        if(user.getPassword().equals(password))
+        if(user.getPassword().equals(Integer.toString(password.hashCode())))
         {
             //登录成功
             return 0;
