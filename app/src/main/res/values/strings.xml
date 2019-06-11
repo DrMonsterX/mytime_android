@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MEMO</string>
     <string name="attention_list">关注列表</string>
-    <string name="change_password_bt">修 改 密 码</string>
+    <string name="change_password_bt">修 改 信 息</string>
     <string name="user_name">用户名</string>
     <string name="id">账户</string>
     <string name="password">密码</string>

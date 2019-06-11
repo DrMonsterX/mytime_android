@@ -1,6 +1,8 @@
 package com.example.dy.mytime.Activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.CallSuper;
@@ -130,8 +132,23 @@ public class UserHomepageActivity extends AppCompatActivity {
         backToMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserHomepageActivity.this, MainActivity.class);
-                startActivity(intent);
+                AlertDialog.Builder builder= new AlertDialog.Builder(UserHomepageActivity.this,R.style.dialog_style);
+                builder.setTitle("提示");//提示框标题
+                builder.setMessage("\n  确认退出当前账号？");//提示内容
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //TODO Auto-generated method stub
+                        Intent intent = new Intent(UserHomepageActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });//确定按钮
+
+                builder.setNegativeButton("取消",null);//取消按钮
+                builder.create().show();
+
             }
         });
 
