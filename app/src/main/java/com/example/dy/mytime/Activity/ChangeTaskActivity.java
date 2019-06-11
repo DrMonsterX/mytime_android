@@ -20,8 +20,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.dy.mytime.Adapter.ChangeNodeAdapter;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.ModifyTaskController;
 import com.example.dy.mytime.TaskPackage.Node;
@@ -169,10 +167,8 @@ public class ChangeTaskActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //TODO Auto-generated method stub
-                            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                            ModifyTaskController myTC=new ModifyTaskController(dbCon);
-                            NodeController myNC=new NodeController(dbCon);
+                            ModifyTaskController myTC=new ModifyTaskController();
+                            NodeController myNC=new NodeController();
                             /*数据库修改任务,且修改该任务的节点*/
                             if(remind.getText().toString().trim().equals("不提醒"))
                                 remindNum=0;
@@ -359,9 +355,8 @@ public class ChangeTaskActivity extends AppCompatActivity {
 
     private void initData(int taskID) {
         this.taskID=taskID;
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        TaskController myTC=new TaskController(dbCon);
+
+        TaskController myTC=new TaskController();
         /*数据库得到ID为taskID的任务*/
         task=myTC.getTaskById(taskID);
 

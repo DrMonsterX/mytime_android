@@ -124,8 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                     builder.create().show();
                 } else {
-//                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                     LoginController myUC = new LoginController();
                     int checkResult = myUC.checkLogin(Integer.parseInt(id.getText().toString()), password.getText().toString());
                     if (checkResult == 0) {

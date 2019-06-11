@@ -13,8 +13,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.dy.mytime.CompletenessPackage.CompletenessController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.FinishTaskController;
 import com.example.dy.mytime.TaskPackage.Task;
@@ -100,10 +99,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
                 // TODO Auto-generated method stub
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                FinishTaskController myTC=new FinishTaskController(dbCon);
-                CompletenessController myCC=new CompletenessController(dbCon);
+
+                FinishTaskController myTC=new FinishTaskController();
+                CompletenessController myCC=new CompletenessController();
                 if(isChecked){
                     /*修改任务的isfinifshed为true*/
                     myTC.changeTaskFinish(list.get(position).gettaskID(),1);

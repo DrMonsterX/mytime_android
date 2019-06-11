@@ -166,8 +166,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                             //TODO Auto-generated method stub
 
 
-//                            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//                            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                             AddScheduleController mySC=new AddScheduleController();
 
 

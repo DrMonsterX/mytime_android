@@ -83,8 +83,7 @@ public class UserHomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_homepage);
 
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());

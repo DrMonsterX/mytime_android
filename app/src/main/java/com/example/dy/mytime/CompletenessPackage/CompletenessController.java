@@ -1,30 +1,45 @@
 package com.example.dy.mytime.CompletenessPackage;
 
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
+import com.example.dy.mytime.TaskPackage.Task;
+import com.example.dy.mytime.TaskPackage.TaskController;
 import com.example.dy.mytime.UserPackage.UserId;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class CompletenessController implements ICompleteness {
-    private MyDatabaseController controller;
-    public CompletenessController(MyDatabaseController myDBC){
-        controller=myDBC;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static android.content.ContentValues.TAG;
+
+public class CompletenessController  {
+    public static int completeness;
+    private int new_completeness;
+    public static int[] his_com=new int[5];
+    public CompletenessController(){
+
     }
 
     //更新本周完成度
     public void updateCompleteness(){
         int allTask=0;
         int finishTask=0;
-        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Task","User");
+        TaskController taskController=new TaskController();
+        ArrayList<Task> tasks = taskController.getAllTask();
         Date now=new Date();
         SimpleDateFormat sd=new SimpleDateFormat("w");
         String nowWeek=sd.format(now);
-        while(cursor.moveToNext()){
-            String stopTime=cursor.getString(cursor.getColumnIndex("FinishTime"));
+       for(int i=0;i<tasks.size();i++){
+            String stopTime=tasks.get(i).gettaskStopTime();
             SimpleDateFormat sd1=new SimpleDateFormat("yyyy-MM-dd");
             Date task = new Date();
             try {
@@ -35,70 +50,58 @@ public class CompletenessController implements ICompleteness {
             String stopWeek=sd.format(task);
             if(nowWeek.equals(stopWeek)){
                 allTask++;
-                int finish=cursor.getInt(cursor.getColumnIndex("IsComplete"));
-                if(finish==1){
+                boolean finish=tasks.get(i).gettaskFinish();
+                if(finish){
                     finishTask++;
                 }
             }
         }
-        cursor.close();
-        controller.closeDB();
         double result=(double)finishTask/(double)allTask*100;
-        int resultCompleteness=(int)result;
-        String cmd="update Completeness set WeekCompleteness="+Integer.toString(resultCompleteness)+" where Completeness_id="+Integer.toString(UserId.getInstance().getUserId());
-        controller.modify(cmd);
+        new_completeness=(int)result;
+        Thread thread=new updateCompleteThread(new_completeness);
+        thread.start();
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
+
 
     //获取本周完成度
     public int getWeekCompleteness(){
-        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Completeness","Completeness");
-        cursor.moveToNext();
-        int result=cursor.getInt(cursor.getColumnIndex("WeekCompleteness"));
-        cursor.close();
-        controller.closeDB();
-        return result;
+        Thread thread=new getCompleteThread(UserId.getInstance().getUserId());
+        thread.start();
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        return completeness;
     }
 
     //获取历史完成度
     public int[] getHistoryCompleteness(){
-        int[] history=new int[5];
-        Cursor cursor=controller.searchById(UserId.getInstance().getUserId(),"Completeness","Completeness");
-        cursor.moveToNext();
-        int value=0;
-        value=cursor.getInt(cursor.getColumnIndex("History_one"));
-        history[0]=value;
-        value=cursor.getInt(cursor.getColumnIndex("History_two"));
-        history[1]=value;
-        value=cursor.getInt(cursor.getColumnIndex("History_three"));
-        history[2]=value;
-        value=cursor.getInt(cursor.getColumnIndex("History_four"));
-        history[3]=value;
-        value=cursor.getInt(cursor.getColumnIndex("History_five"));
-        history[4]=value;
-        cursor.close();
-        controller.closeDB();
-        return history;
+        Thread thread=new getHistoryThread(UserId.getInstance().getUserId());
+        thread.start();
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        return his_com;
     }
 
-    //每周更新历史完成度
-    public void updateHistory(){
-        Cursor userCursor=controller.searchAll("User");
-        while (userCursor.moveToNext()){
-            int userId=userCursor.getInt(userCursor.getColumnIndex("User_id"));
-            Cursor cursor=controller.searchById(userId,"Completeness","Completeness");
-            cursor.moveToNext();
-            int[] history=new int[5];
-            history[0]=cursor.getInt(cursor.getColumnIndex("WeekCompleteness"));
-            history[1]=cursor.getInt(cursor.getColumnIndex("History_one"));
-            history[2]=cursor.getInt(cursor.getColumnIndex("History_two"));
-            history[3]=cursor.getInt(cursor.getColumnIndex("History_three"));
-            history[4]=cursor.getInt(cursor.getColumnIndex("History_four"));
-            cursor.close();
-            String cmd="update Completeness set WeekCompleteness=0,History_one="+Integer.toString(history[0])+",History_two"+Integer.toString(history[1])+
-                    ",History_three="+Integer.toString(history[2])+",History_four="+Integer.toString(history[3])+",History_five="+Integer.toString(history[4])+
-                    " where Completeness="+Integer.toString(userId);
-            controller.modify(cmd);
-        }
-    }
+
 
 }

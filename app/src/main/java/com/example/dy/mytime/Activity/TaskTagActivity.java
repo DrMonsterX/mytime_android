@@ -14,8 +14,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.DeleteTaskController;
 import com.example.dy.mytime.TaskPackage.SortTaskController;
@@ -67,9 +66,8 @@ public class TaskTagActivity extends AppCompatActivity {
         tagStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
+
+                TaskController myTC=new TaskController();
 
                 /*搜索追星标签的任务*/
                 tasklist.clear();
@@ -85,9 +83,8 @@ public class TaskTagActivity extends AppCompatActivity {
         tagLove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
+
+                TaskController myTC=new TaskController();
 
                 /*搜索恋爱标签的任务*/
                 tasklist.clear();
@@ -104,9 +101,8 @@ public class TaskTagActivity extends AppCompatActivity {
         tagLife.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
+
+                TaskController myTC=new TaskController();
 
                 /*搜索生活标签的任务*/
                 tasklist.clear();
@@ -122,9 +118,8 @@ public class TaskTagActivity extends AppCompatActivity {
         tagWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
+
+                TaskController myTC=new TaskController();
 
                 /*搜索工作标签的任务*/
                 tasklist.clear();
@@ -140,9 +135,8 @@ public class TaskTagActivity extends AppCompatActivity {
         tagMo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
+
+                TaskController myTC=new TaskController();
 
                 /*搜索默认标签的任务*/
                 tasklist.clear();
@@ -236,9 +230,8 @@ public class TaskTagActivity extends AppCompatActivity {
     }
 
     private void initData(String tag) {
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        TaskController myTC=new TaskController(dbCon);
+
+        TaskController myTC=new TaskController();
 
         /*搜索恋爱标签的任务*/
         tasklist.clear();

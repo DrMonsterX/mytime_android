@@ -10,9 +10,9 @@ import java.util.Date;
 
 public class CalendarColorController extends TaskController implements IGetCalendarColor {
     private MyDatabaseController controller;
-    public CalendarColorController(MyDatabaseController myDBC){
-        super(myDBC);
-        this.controller=myDBC;
+    public CalendarColorController(){
+        super();
+
     }
 
     //获取对应月份颜色色块

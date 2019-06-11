@@ -14,8 +14,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.DeleteTaskController;
 import com.example.dy.mytime.TaskPackage.SortTaskController;
@@ -209,9 +207,8 @@ public class TaskListActivity extends AppCompatActivity {
 
     private void initData() {
         tasklist.clear();
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        TaskController myTC=new TaskController(dbCon);
+
+        TaskController myTC=new TaskController();
         /*数据库得到全部任务列*/
         ArrayList<Task> allTask=myTC.getAllTask();
         for(int i=0;i<allTask.size();i++){
@@ -250,10 +247,9 @@ public class TaskListActivity extends AppCompatActivity {
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
             //滑动事件
             Collections.swap(tasklist,viewHolder.getAdapterPosition(),target.getAdapterPosition());
-            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-            TaskController myTC=new TaskController(dbCon);
-            SortTaskController mySTC=new SortTaskController(dbCon);
+
+            TaskController myTC=new TaskController();
+            SortTaskController mySTC=new SortTaskController();
             /*数据库日程列表交换位置，现在tasklist的顺序即为新顺序*/
             if(tasklist.size()==myTC.getAllCount()){
                 for(int i=0;i<tasklist.size();i++){
@@ -294,10 +290,9 @@ public class TaskListActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //TODO Auto-generated method stub
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                DeleteTaskController myTC=new DeleteTaskController(dbCon);
-                SortTaskController mySTC=new SortTaskController(dbCon);
+
+                DeleteTaskController myTC=new DeleteTaskController();
+                SortTaskController mySTC=new SortTaskController();
                 /*数据库删除任务*/
                 myTC.deleteTask(tasklist.get(position).gettaskID());
                 tasklist.remove(position);//修改list内容

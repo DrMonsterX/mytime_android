@@ -23,8 +23,6 @@ import java.util.Date;
 import android.app.TimePickerDialog;
 import android.widget.TimePicker;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.SchedulePackage.ModifyScheduleController;
 import com.example.dy.mytime.SchedulePackage.Schedule;
@@ -162,8 +160,7 @@ public class ChangeScheduleActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //TODO Auto-generated method stub
-//                            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//                            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                             ModifyScheduleController mySC=new ModifyScheduleController();
                             /*数据库修改日程*/
                             startTime=getDate.getText()+" "+getStartTime.getText();
@@ -324,8 +321,7 @@ public class ChangeScheduleActivity extends AppCompatActivity {
     private void initData(int scheduleID) {
         /*数据库得到ID为scheduleID的日程*/
         this.scheduleId=scheduleID;
-//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         ScheduleController mySC=new ScheduleController();
         schedule=mySC.getScheduleById(scheduleID);
     }
