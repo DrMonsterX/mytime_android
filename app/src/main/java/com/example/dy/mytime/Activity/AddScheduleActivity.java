@@ -1,7 +1,9 @@
 package com.example.dy.mytime.Activity;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.CallSuper;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,11 +22,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.SchedulePackage.AddScheduleController;
-import com.example.dy.mytime.SchedulePackage.ScheduleController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,7 +52,8 @@ public class AddScheduleActivity extends AppCompatActivity {
     private Calendar calendar;// 用来装日期
     private DatePickerDialog dialog;
     private TimePickerDialog timePickerDialog;
-
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
 
     @CallSuper
     @Override
@@ -68,7 +69,7 @@ public class AddScheduleActivity extends AppCompatActivity {
     }
 
     protected boolean isShouldHideKeyBord(View v, MotionEvent ev) {
-        if (v != null && (v instanceof EditText)) {//OIOJOIJOIJOJOI
+        if (v != null && (v instanceof EditText)) {
             int[] l = {0, 0};
             v.getLocationInWindow(l);
             int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
@@ -165,8 +166,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                             //TODO Auto-generated method stub
 
 
-//                            MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//                            MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                             AddScheduleController mySC=new AddScheduleController();
 
 
@@ -176,17 +176,21 @@ public class AddScheduleActivity extends AppCompatActivity {
                                 remindNum=1;
 
                             if(repeat.getText().toString().trim().equals("不重复"))
-                                repeatNum=0;
-                            else if(repeat.getText().toString().trim().equals("一周内每天重复"))
                                 repeatNum=1;
-                            else repeatNum=2;
+                            else if(repeat.getText().toString().trim().equals("一周内每天重复"))
+                                repeatNum=getDayOfWeek();
+                            else repeatNum=getDayOfMonth();
 
-
-                            mySC.addSchedule(scheduleName.getText().toString(),startTime,stopTime,remark.getText().toString(),remindNum);
-                            Intent intent = new Intent();
-                            Bundle bundle = new Bundle();
                             SimpleDateFormat mydf = new SimpleDateFormat("yyyy-MM-dd");
                             String nowDay = mydf.format(new Date());
+
+                            for(int i=0;i<repeatNum;i++){
+                                mySC.addSchedule(scheduleName.getText().toString(),startTime,stopTime,remark.getText().toString(),remindNum);
+                                addDate();
+                            }
+
+                            Intent intent = new Intent();
+                            Bundle bundle = new Bundle();
                             bundle.putString("dayStr", nowDay);
                             intent.putExtras(bundle);
                             intent.setClass(AddScheduleActivity.this, ScheduleListActivity.class);
@@ -315,4 +319,41 @@ public class AddScheduleActivity extends AppCompatActivity {
     }
 
     private Context getContext(){return this;}
+
+
+
+    private int getDayOfWeek(){
+        Calendar calendar= Calendar.getInstance();
+        //获取当前时间为本周的第几天
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        if (day==1) {
+            day=7;
+        } else {
+            day=day-1;
+        }
+       day=8-day;
+    return day;
+    }
+
+    private int getDayOfMonth(){
+        Calendar calendar= Calendar.getInstance();
+        int last = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);    //获取本月最大天数
+        int day = calendar.get(Calendar.DAY_OF_MONTH);    //获取当前天数
+
+        day=last-day+1;
+        return day;
+    }
+
+    private void addDate(){
+        String[] start_parts = startTime.split("-| ");
+        Log.e("2",start_parts[2]);
+        start_parts[2]=Integer.toString(Integer.parseInt(start_parts[2])+1);
+        startTime=start_parts[0]+"-"+start_parts[1]+"-"+start_parts[2]+" "+start_parts[3];
+
+        String[] end_parts = stopTime.split("-| ");
+        end_parts[2]=Integer.toString(Integer.parseInt(end_parts[2])+1);
+        stopTime=end_parts[0]+"-"+end_parts[1]+"-"+end_parts[2]+" "+end_parts[3];
+
+   }
+
 }

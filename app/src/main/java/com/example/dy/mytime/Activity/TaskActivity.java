@@ -21,8 +21,7 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.Adapter.NodeAdapter;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.Node;
@@ -161,9 +160,8 @@ public class TaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //弹窗
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                ShareTaskController mySTC=new ShareTaskController(dbCon);
+
+                ShareTaskController mySTC=new ShareTaskController();
                 String myShareCode=mySTC.getShareCode(taskID);
                 AlertDialog.Builder builder= new AlertDialog.Builder(TaskActivity.this,R.style.dialog_style);
 
@@ -185,9 +183,8 @@ public class TaskActivity extends AppCompatActivity {
 
     private void initData(int taskID) {
         this.taskId=taskID;
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        TaskController myTC=new TaskController(dbCon);
+
+        TaskController myTC=new TaskController();
 
         /*数据库得到ID为taskID的任务*/
         task=myTC.getTaskById(taskID);

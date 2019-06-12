@@ -1,18 +1,24 @@
 package com.example.dy.mytime.TaskPackage;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
+
 
 public class ModifyTaskController extends TaskController implements IModifyTask {
-    private MyDatabaseController controller;
-    public ModifyTaskController(MyDatabaseController myDBC){
-        super(myDBC);
-        this.controller=myDBC;
+    public ModifyTaskController(){
+        super();
+
     }
 
     //修改任务
     public void changeTask(int taskId,String taskName,String startTime,String stopTime,int remind,String tag,String remark){
-        String cmd="update Task set TaskName='"+taskName+"',StartTime='"+startTime+"',FinishTime='"+stopTime
-                +"',Remark='"+remark+"',Tag='"+tag+"',IsRemind="+Integer.toString(remind)+" where Task_id="+Integer.toString(taskId);
-        controller.modify(cmd);
+        Thread thread=new ChangeTaskThread(taskId,taskName,startTime,stopTime,remind,remark,tag);
+        thread.start();
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

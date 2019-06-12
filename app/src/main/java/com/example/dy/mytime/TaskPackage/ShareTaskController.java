@@ -4,9 +4,9 @@ import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
 
 public class ShareTaskController extends TaskController implements IShareTask {
     private MyDatabaseController controller;
-    public ShareTaskController(MyDatabaseController myDBC){
-        super(myDBC);
-        this.controller=myDBC;
+    public ShareTaskController(){
+        super();
+
     }
 
     public String getShareCode(int taskId){

@@ -17,8 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dy.mytime.Adapter.MonthTaskAdapter;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.SchedulePackage.AddScheduleController;
 import com.example.dy.mytime.TaskPackage.AddTaskController;
@@ -103,14 +101,13 @@ public class CalendarActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
         String nowMonth = df.format(new Date());//当前月
 
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-        TaskController myTC=new TaskController(dbCon);
-        CalendarColorController myCC=new CalendarColorController(dbCon);
+
+        TaskController myTC=new TaskController();
+        CalendarColorController myCC=new CalendarColorController();
         /*数据库得到本月nowMonth的任务列表*/
         ArrayList<Task> myMonthTask=myTC.getTaskByMonth(nowMonth);
         /*获得本月即nowMonth的任务色块（每天三种颜色）*/
-        ArrayList<TaskDraw> monthDraw=new ArrayList<>();
+        ArrayList<TaskDraw> monthDraw;
         monthDraw=myCC.getColorByMonth(myMonthTask,nowMonth);
         final List<TaskDraw> taskdrawlist = new ArrayList<>();
         taskdrawlist.addAll(monthDraw);
@@ -120,10 +117,9 @@ public class CalendarActivity extends AppCompatActivity {
         cal.setOnClickListener(new CustomCalendar.onClickListener() {
             @Override
             public void onLeftRowClick() {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
-                CalendarColorController mmyCC=new CalendarColorController(dbCon);
+
+                TaskController myTC=new TaskController();
+                CalendarColorController mmyCC=new CalendarColorController();
                 String month=cal.monthChange(-1);
 
                 //month月的任务列表
@@ -147,10 +143,8 @@ public class CalendarActivity extends AppCompatActivity {
 
             @Override
             public void onRightRowClick() {
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                TaskController myTC=new TaskController(dbCon);
-                CalendarColorController myCC=new CalendarColorController(dbCon);
+                TaskController myTC=new TaskController();
+                CalendarColorController myCC=new CalendarColorController();
                 String month=cal.monthChange(1);
 
                 //month月的任务列表
@@ -267,9 +261,7 @@ public class CalendarActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 //TODO Auto-generated method stub
 
-                                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                                AddTaskController myTC=new AddTaskController(dbCon);
+                                AddTaskController myTC=new AddTaskController();
                                 myTC.addTaskByString(new1);
                                 /*清空剪切板，防止重复添加**/
                                 clipboard.setPrimaryClip(ClipData.newPlainText(null, ""));
@@ -314,8 +306,7 @@ public class CalendarActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 //TODO Auto-generated method stub
 
-//                                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//                                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                                 AddScheduleController mySC=new AddScheduleController();
                                 mySC.addScheduleByString(new1);
                                 /*清空剪切板，防止重复添加**/

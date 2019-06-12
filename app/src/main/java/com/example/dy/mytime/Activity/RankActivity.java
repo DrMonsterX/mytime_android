@@ -11,8 +11,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.Adapter.RankAdapter;
 import com.example.dy.mytime.UserPackage.FollowController;
@@ -98,8 +96,7 @@ public class RankActivity extends AppCompatActivity {
             }
         });
 
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         FollowController myUC=new FollowController();
         /*数据库得到排名列表*/
         ArrayList<User> myRank=myUC.getRank();

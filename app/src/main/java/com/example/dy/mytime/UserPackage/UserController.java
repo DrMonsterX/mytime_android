@@ -2,6 +2,8 @@ package com.example.dy.mytime.UserPackage;
 
 import android.database.Cursor;
 
+import com.example.dy.mytime.CompletenessPackage.CompletenessController;
+import com.example.dy.mytime.CompletenessPackage.getCompleteThread;
 import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
 
 public class UserController implements IGetUser{
@@ -27,10 +29,17 @@ public class UserController implements IGetUser{
 
     //获取用户本周完成度
     public int getWeekCompleteness(int userId){
-        Cursor cursor=controller.searchById(userId,"Completeness","Completeness");
-        cursor.moveToNext();
-        int result=cursor.getInt(cursor.getColumnIndex("WeekCompleteness"));
-        return result;
+        Thread thread=new getCompleteThread(userId);
+        thread.start();
+        try
+        {
+            thread.join();//等待登录验证线程执行结束后，主线程继续执行
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        return CompletenessController.completeness;
     }
 
 }

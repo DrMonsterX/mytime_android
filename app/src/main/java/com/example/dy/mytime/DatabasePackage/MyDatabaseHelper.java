@@ -7,55 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_User = "create table User(" +
             //primary key 将id列设为主键    autoincrement表示id列是自增长的
-            "User_id integer primary key," +
-            "UserName text," +
-            "Icon_id interger," +
-            "Password text,"+
-            "Completeness_id integer)";
+            "User_id integer primary key)";
 
-    public static final String CREATE_Follow = "create table Follow(" +
-            //primary key 将id列设为主键    autoincrement表示id列是自增长的
-            "Follow_id integer primary key,"+
-            "Following_id integer," +
-            "Followed_id integer)";
-
-    public static final String CREATE_Task = "create table Task("+
-            "Task_id integer primary key," +
-            "User_id integer," +
-            "TaskName text,"+
-            "StartTime text,"+
-            "FinishTime text,"+
-            "IsComplete integer,"+
-            "Remark text,"+
-            "IsRemind integer,"+
-            "Tag text,"+
-            "Position integer)";
-
-    public static final String CREATE_Node = "create table Node("+
-            "Node_id integer primary key autoincrement,"+
-            "Task_id integer,"+
-            "NodeName text,"+
-            "Time text,"+
-            "IsComplete integer)";
-
-    public static final String CREATE_Schedule = "create table Schedule("+
-            "Schedule_id integer primary key autoincrement,"+
-            "User_id integer,"+
-            "Position integer,"+
-            "ScheduleName text,"+
-            "StartTime text,"+
-            "FinishTime text,"+
-            "Remark text,"+
-            "IsRemind integer)";
-
-    public static final String CREATE_Completeness = "create table Completeness("+
-            "Completeness_id integer primary key autoincrement,"+
-            "WeekCompleteness integer,"+
-            "History_one integer,"+
-            "History_two integer,"+
-            "History_three integer,"+
-            "History_four integer,"+
-            "History_five integer)";
 
     private Context mContext;
 
@@ -69,11 +22,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //调用SQLiteDatabase中的execSQL（）执行建表语句。
         db.execSQL(CREATE_User);
-        db.execSQL(CREATE_Follow);
-        db.execSQL(CREATE_Task);
-        db.execSQL(CREATE_Node);
-        db.execSQL(CREATE_Schedule);
-        db.execSQL(CREATE_Completeness);
+
     }
 
     @Override

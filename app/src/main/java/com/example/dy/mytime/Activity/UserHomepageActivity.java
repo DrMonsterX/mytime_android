@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -84,13 +85,10 @@ public class UserHomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_homepage);
 
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());
-
-
         retrunButton=(ImageButton)findViewById(R.id.returnBtn);
         addAttentionButton=(Button) findViewById(R.id.addAttBtn);
         changeButton = (TextView) findViewById(R.id.changePasswordView);
@@ -140,6 +138,10 @@ public class UserHomepageActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
+                        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+                        dbCon.deleteId();
+
                         //TODO Auto-generated method stub
                         Intent intent = new Intent(UserHomepageActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -148,6 +150,7 @@ public class UserHomepageActivity extends AppCompatActivity {
 
                 builder.setNegativeButton("取消",null);//取消按钮
                 builder.create().show();
+
 
             }
         });

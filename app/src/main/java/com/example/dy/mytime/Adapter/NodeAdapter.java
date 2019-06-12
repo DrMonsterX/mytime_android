@@ -10,8 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.Node;
 import com.example.dy.mytime.TaskPackage.NodeController;
@@ -68,9 +67,8 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.NodeViewHolder
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
                 // TODO Auto-generated method stub
-                MyDatabaseHelper dbHelper=new MyDatabaseHelper(context,"OurAPP.db", null, 1);
-                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                NodeController myTC=new NodeController(dbCon);
+
+                NodeController myTC=new NodeController();
                 if(isChecked){
                     /*修改节点的isfinifshed为true*/
                     myTC.changeNodeFinish(list.get(position).getnodeId(),1);

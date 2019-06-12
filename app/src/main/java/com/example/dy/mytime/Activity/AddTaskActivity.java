@@ -18,8 +18,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.dy.mytime.CompletenessPackage.CompletenessController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.TaskPackage.AddTaskController;
 import com.example.dy.mytime.TaskPackage.TaskController;
@@ -161,10 +159,9 @@ public class AddTaskActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //TODO Auto-generated method stub
-                                MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-                                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
-                                AddTaskController myTC=new AddTaskController(dbCon);
-                                CompletenessController myCC=new CompletenessController(dbCon);
+
+                                AddTaskController myTC=new AddTaskController();
+                                CompletenessController myCC=new CompletenessController();
                                 /*数据库添加任务*/
                                 if(remind.getText().toString().trim().equals("不提醒"))
                                     remindNum=0;

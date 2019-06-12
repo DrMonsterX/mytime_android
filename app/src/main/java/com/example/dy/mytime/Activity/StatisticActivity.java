@@ -168,7 +168,7 @@ public class StatisticActivity extends AppCompatActivity {
 
         dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
         dbCon=new MyDatabaseController(dbHelper);
-        myCC=new CompletenessController(dbCon);
+        myCC=new CompletenessController();
         /*数据库得到完成度*/
         int value=myCC.getWeekCompleteness();
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
@@ -230,7 +230,7 @@ public class StatisticActivity extends AppCompatActivity {
 
         dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
         dbCon=new MyDatabaseController(dbHelper);
-        myCC=new CompletenessController(dbCon);
+        myCC=new CompletenessController();
         /*数据库得到历史完成度*/
         int[] history=myCC.getHistoryCompleteness();
         List<BarEntry> yVals = new ArrayList<>();

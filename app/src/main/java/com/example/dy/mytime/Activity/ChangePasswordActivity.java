@@ -17,8 +17,6 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.UserPackage.PasswordController;
 import com.example.dy.mytime.UserPackage.User;
@@ -72,8 +70,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());
@@ -113,8 +110,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 }
                 else if(newPass.getText().toString().equals(ensurePass.getText().toString()))//两次密码输入一致时
                 {
-//                    MyDatabaseHelper dbHelper=new MyDatabaseHelper(getContext(), "OurAPP.db", null, 1);
-//                    MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                     PasswordController myUC=new PasswordController();
                     /*数据库修改密码*/
                     myUC.changePassword(newPass.getText().toString());

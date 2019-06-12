@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.UserPackage.FollowController;
 import com.example.dy.mytime.UserPackage.User;
@@ -52,8 +51,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.RankViewHolder
 
     @Override
     public void onBindViewHolder( RankAdapter.RankViewHolder holder, final int position) {
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         UserController myUC=new UserController();
         User user = list.get(position);
         holder.userName.setText(user.getUserName());

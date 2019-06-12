@@ -1,4 +1,4 @@
-package com.example.dy.mytime.SchedulePackage;
+package com.example.dy.mytime.TaskPackage;
 
 import android.util.Log;
 
@@ -10,27 +10,29 @@ import okhttp3.Response;
 
 import static android.content.ContentValues.TAG;
 
-public class resortScheduleThread extends Thread {
-    private int scheduleId;
+public class resortTaskThread extends  Thread {
+    private int taskId;
     private int position;
-    public resortScheduleThread(int scheduleId,int position){
-        this.scheduleId=scheduleId;
+
+    //重定义构造函数，获取id
+    public resortTaskThread(int taskId,int position){
+        this.taskId=taskId;
         this.position=position;
+
     }
 
-    final String path="http://119.3.217.215:8081/resortSchedule?scheduleId=";
+    final String path="http://119.3.217.215:8081/resortTask?taskId=";
 
     public void run() {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(path+scheduleId+"&position="+position).build();
+        Request request = new Request.Builder().url(path+taskId+"&position="+position).build();
         try {
             Response response = client.newCall(request).execute();//发送请求
             String result = response.body().string();
             Log.d(TAG, "result: "+result);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

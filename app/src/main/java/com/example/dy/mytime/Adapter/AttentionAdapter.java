@@ -11,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.UserPackage.FollowController;
 import com.example.dy.mytime.UserPackage.User;
@@ -76,8 +75,7 @@ public class AttentionAdapter extends RecyclerView.Adapter<AttentionAdapter.Atte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO Auto-generated method stub
-//                        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-//                        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                         FollowController myUC=new FollowController();
                         /*数据库取消关注*/
                         myUC.deleteFollow(list.get(position).getUserID());

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dy.mytime.Activity.UserHomepageActivity;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseController;
-import com.example.dy.mytime.DatabasePackage.MyDatabaseHelper;
+
 import com.example.dy.mytime.R;
 import com.example.dy.mytime.UserPackage.FollowController;
 import com.example.dy.mytime.UserPackage.User;
@@ -60,8 +60,7 @@ public class SearchUserAdapter extends RecyclerView.Adapter<SearchUserAdapter.Se
 
     @Override
     public void onBindViewHolder( SearchUserAdapter.SearchViewHolder holder, final int position) {
-//        MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-//        MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
         UserController myUC=new UserController();
         FollowController myFC=new FollowController();
         /*数据库找到id为userID的user*/
@@ -81,18 +80,18 @@ public class SearchUserAdapter extends RecyclerView.Adapter<SearchUserAdapter.Se
             }
         }
 
-        if (user.getIconID()==1) holder.userImage.setBackgroundResource(R.drawable.headshot1);
-        else if (user.getIconID()==2) holder.userImage.setBackgroundResource(R.drawable.headshot2);
-        else if (user.getIconID()==3) holder.userImage.setBackgroundResource(R.drawable.headshot3);
-        else if (user.getIconID()==4) holder.userImage.setBackgroundResource(R.drawable.headshot4);
+        Log.e("icon",Integer.toString(user.getIconID()));
+        if (user.getIconID()==1) holder.userImage.setImageResource(R.drawable.headshot1);
+        else if (user.getIconID()==2) holder.userImage.setImageResource(R.drawable.headshot2);
+        else if (user.getIconID()==3) holder.userImage.setImageResource(R.drawable.headshot3);
+        else if (user.getIconID()==4) holder.userImage.setImageResource(R.drawable.headshot4);
 
         holder.attention_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 /*数据库添加关注*/
-//                MyDatabaseHelper dbHelper=new MyDatabaseHelper(context, "OurAPP.db", null, 1);
-//                MyDatabaseController dbCon=new MyDatabaseController(dbHelper);
+
                 FollowController myUC=new FollowController();
                 myUC.followUser(list.get(position).getUserID());
                 if(Activity.class.isInstance(context))
