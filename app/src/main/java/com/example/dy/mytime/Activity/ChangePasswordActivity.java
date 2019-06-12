@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private EditText newPass;
     private EditText ensurePass;
     private User user;
+    private ImageView userImage;
     public static int return_code;
     @CallSuper
     @Override
@@ -75,14 +77,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
         UserController myUC=new UserController();
         /*数据库找到id为userID的user*/
         user=myUC.getUser(UserId.getInstance().getUserId());
-
+        userImage=(ImageView) findViewById(R.id.picture1);
+        if (user.getIconID()==0)userImage .setBackgroundResource(R.drawable.headshot1);
+        else if (user.getIconID()==1) userImage.setBackgroundResource(R.drawable.headshot2);
+        else if (user.getIconID()==2) userImage.setBackgroundResource(R.drawable.headshot3);
+        else if (user.getIconID()==3) userImage.setBackgroundResource(R.drawable.headshot4);
         newPass=(EditText) findViewById(R.id.newPassword);
         ensurePass=(EditText) findViewById(R.id.ensurePassword);
         userName=(TextView) findViewById(R.id.userName);
         userName.setText(user.getUserName());
         id=(TextView) findViewById(R.id.id);
         id.setText(user.getUserID()+"");
-
         returnButton=(ImageButton)findViewById(R.id.returnBtn);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -76,8 +76,8 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
-//跳转关闭
-        /*
+
+
         goTask=(TextView)findViewById(R.id.goTask);
         goTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +95,7 @@ public class CalendarActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        */
+
 
         cal = (CustomCalendar)findViewById(R.id.cal);
 
