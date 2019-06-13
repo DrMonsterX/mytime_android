@@ -10,7 +10,7 @@ public class ModifyTaskController extends TaskController implements IModifyTask 
 
     //修改任务
     public void changeTask(int taskId,String taskName,String startTime,String stopTime,int remind,String tag,String remark){
-        Thread thread=new ChangeTaskThread(taskId,taskName,startTime,stopTime,remind,remark,tag);
+        Thread thread=new ChangeTaskThread(taskId,taskName,startTime,stopTime,remind,tag,remark);
         thread.start();
         try
         {
