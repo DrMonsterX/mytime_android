@@ -75,11 +75,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         holder.seekBar.setProgress(task.getlen());
 
-        if (task.gettaskTag().equals("默认")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#f1ef6b7a"));//修改了颜色
+        if (task.gettaskTag().equals("默认")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#f4d0af"));//修改了颜色
         else if (task.gettaskTag().equals("追星")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#b2dfce"));
         else if (task.gettaskTag().equals("恋爱")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#f59d9d"));
         else if (task.gettaskTag().equals("日常")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#F5F5DC"));
-        else if (task.gettaskTag().equals("工作")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#f4d0af"));
+        else if (task.gettaskTag().equals("工作")) holder.la_taskbg.setBackgroundColor(Color.parseColor("#edbbac"));
 
         if (mItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
