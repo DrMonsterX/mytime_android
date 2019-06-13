@@ -14,11 +14,11 @@
     <color name="orange1">#f77c43</color>
 
     <color name="node">#acd0ea</color>
-    <color name="task1">#f1ef6b7a</color>
+    <color name="task1">#f4d0af</color>
     <color name="task2">#b2dfce</color>
     <color name="task3">#f59d9d</color>
     <color name="task4">#F5F5DC</color>
-    <color name="task5">#f4d0af</color>
+    <color name="task5">#edbbac</color>
     <color name="schedule">#F5F5DC</color>
 
 </resources>
