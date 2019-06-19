@@ -14,6 +14,7 @@ public class UserController implements IGetUser{
 
     //获取目标ID用户
     public User getUser(int userId){
+        LoginController.user=null;
         Thread thread=new LoginThread(userId);
         thread.start();  //执行登录验证线程
         try
